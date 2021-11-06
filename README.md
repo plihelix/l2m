@@ -1,10 +1,13 @@
 # [lightlocalmarket](https://github.com/plihelix/lightlocalmarket) - (L2M) Low Impact Local Market Data Aggregation
 
-# Automates the aggregation of open-source stock market data into a historical database of daily stock price data for analysis.
+## Automates the aggregation of open-source stock market data into a historical database of daily stock price data for analysis.
 
 Currently retrieves ONCE. Full 505 components in the S&P 500 daily history for up to 20 years and stores them in a Mongo-DB. Stored in float-16 for OHLC data and int32 for the volume. Later plans to incorperate an option for more traditional 32-bit floats.
 
-# Install Mongo: [mongodb.com](https://www.mongodb.com/try/download/community)
+Full daily data approximates 250mb stored.
+[TODO:Hourly data x8 for about 2.3gb combined]
+
+# Required MongoDB: [mongodb.com](https://www.mongodb.com/try/download/community)
 
 ## *`TARGETS:`*
 * collate free stock market data from public sources
@@ -20,7 +23,6 @@ Currently retrieves ONCE. Full 505 components in the S&P 500 daily history for u
 
 ## *`Command Line Interface Commands`*
 * getindex - imports the current S&P 500 constituents from [Wikipedia](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)
-    * *`TODO: /assets` <- add this folder before download*
 * run [SYMBOL] - retrieve daily data for the symbols from Alpha Vantage and Tradier.
 * test [SYMBOL] - retrieve the last daily data for the symbol from the database.
 * all - list the status of every component in the index
