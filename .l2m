@@ -1,0 +1,12 @@
+---
+apikeys:
+ alphavantage: ""
+ polygonio: ""
+ tradier: ""
+ 
+apitrials:
+ alphavantage: "true"
+ polygonio: "true"
+ tradier: "true"
+mongodb:
+  host: "mongodb://localhost:27017/"
