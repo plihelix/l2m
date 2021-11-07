@@ -5,10 +5,10 @@
 
 ## Lightlocalmarket automates the aggregation of open-source stock market data into a historical database of daily stock price data for analysis.
 
-A project for IST421-T4. 
+A project for IST421-T4.
 Currently retrieves ONCE.
 
-##### Retrieves historical data on 505 components in the S&P 500 daily history for up to 20 years and stores them in a MongoDB. 
+##### Retrieves historical data on 505 components in the S&P 500 daily history for up to 20 years and stores them in a MongoDB.
 Stored in 16 bit float for OHLC data and 32 bit integers for the Volume. Later plans to incorperate an option for more traditional 32-bit floats.
 
 Full daily data approximates 250mb stored.
@@ -21,7 +21,7 @@ Full daily data approximates 250mb stored.
 Once setup, the URI address should look something like this: `mongodb://localhost:27017/`
 Please place this in the `.l2m` configuration file inside of the quotes for the appropriate items.
 * Sign up for API access:
-	* [Alpha Vantage](https://www.alphavantage.co/support/#api-key) 
+	* [Alpha Vantage](https://www.alphavantage.co/support/#api-key)
 	* [Tradier Sandbox](https://developer.tradier.com/user/sign_up)
 	* Optional [Polygon.io](https://polygon.io/) *`(Working not yet implemented)`
 
@@ -38,7 +38,7 @@ Second step: Use `lightlocalmarket run` to retrieve daily data for the symbols f
 * Two threads are assigned a portion of the missing list. Because of different complexities in data one may terminate the program early. Simply run again and the remaining will be split again.
 
 Optional: Minimize that console and open another console window.
-`lightlocalmarket test [SYMBOL]` will retrieve the last daily data OHLV for the symbol from the database and output it to the console. 
+`lightlocalmarket test [SYMBOL]` will retrieve the last daily data OHLV for the symbol from the database and output it to the console.
 ![command output](https://github.com/plihelix/l2m/assets/dataretrieval_test.png)
 `lightlocalmarket all` wil list the status of every component in the index.
 ![command output](https://github.com/plihelix/l2m/assets/all_downloadinprogress.png)
@@ -51,4 +51,4 @@ Optional: Minimize that console and open another console window.
 
 ## SP_500.day
 ![command output](https://github.com/plihelix/l2m/assets/day_datastructure.png)
-*note that MongoDB Compass is not able to display 16 bit floating points correctly. 
+*note that MongoDB Compass is not able to display 16 bit floating points correctly.
