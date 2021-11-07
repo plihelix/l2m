@@ -8,7 +8,7 @@
 A project for IST421-T4.
 Currently retrieves ONCE.
 
-##### Retrieves historical data on 505 components in the S&P 500 daily history for up to 20 years and stores them in a MongoDB.
+### Retrieves historical data on 505 components in the S&P 500 daily history for up to 20 years and stores them in a MongoDB.
 Stored in 16 bit float for OHLC data and 32 bit integers for the Volume. Later plans to incorperate an option for more traditional 32-bit floats.
 
 Full daily data approximates 250mb stored.
@@ -27,28 +27,31 @@ Please place this in the `.l2m` configuration file inside of the quotes for the 
 
 # *`Using lightlocalmarket:`*
 Running `lightlocalmarket` will display the avaiable commands as well as the status of api's in the config file.
-[[https://github.com/plihelix/l2m/tree/main/assets/BasicRun.png]]
+<img src="assets/BasicRun.png">
 
 First step: Use `lightlocalmarket getindex` to import the current S&P 500 constituents from [Wikipedia](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)
-[[https://github.com/plihelix/l2m/tree/main/assets/getindex.png]]
+<img src="assets/getindex.png">
 
 Second step: Use `lightlocalmarket run` to retrieve daily data for the symbols from Alpha Vantage and Tradier.
-[[https://github.com/plihelix/l2m/tree/main/assets/Initial_Run.png)]]
+<img src="assets/Initial_Run.png">
 * The application can be interrupted and will resume if run again.
 * Two threads are assigned a portion of the missing list. Because of different complexities in data one may terminate the program early. Simply run again and the remaining will be split again.
 
 Optional: Minimize that console and open another console window.
+
 `lightlocalmarket test [SYMBOL]` will retrieve the last daily data OHLV for the symbol from the database and output it to the console.
-[[https://github.com/plihelix/l2m/tree/main/assets/dataretrieval_test.png]]
+<img src="assets/dataretrieval_test.png">
+
 `lightlocalmarket all` wil list the status of every component in the index.
-[[https://github.com/plihelix/l2m/tree/main/assets/all_downloadinprogress.png]]
+<img src="assets/all_downloadinprogress.png">
+
 # *`TARGETS:`*
 * collate stock market data from public sources for example uses in statistical analysis, strategy basktesting, and more.
 * automatically update mongoDB with historical data for the S&P 500
 # *`Data Structure:`*
 ## SP_500.components
-[[https://github.com/plihelix/l2m/tree/main/assets/components_datastructure.png]]
+<img src="assets/components_datastructure.png">
 
 ## SP_500.day
-[[https://github.com/plihelix/l2m/tree/main/assets/day_datastructure.png]]
-*note that MongoDB Compass is not able to display 16 bit floating points correctly please use the test command.
+<img src="assets/day_datastructure.png">
+*note that MongoDB Compass is not able to display 16 bit floating points correctly.
