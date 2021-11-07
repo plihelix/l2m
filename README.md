@@ -8,6 +8,9 @@
 A project for IST421-T4.
 Currently retrieves ONCE.
 
+* lightlocalmarket - amd64 linux binary executable
+* lightlocalmarket.exe - windows binary executable
+
 ### Retrieves historical data on 505 components in the S&P 500 daily history for up to 20 years and stores them in a MongoDB.
 Stored in 16 bit float for OHLC data and 32 bit integers for the Volume. Later plans to incorperate an option for more traditional 32-bit floats.
 
