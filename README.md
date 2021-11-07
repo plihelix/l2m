@@ -1,33 +1,54 @@
-# [lightlocalmarket](https://github.com/plihelix/lightlocalmarket) - (L2M) Low Impact Local Market Data Aggregation
+# [lightlocalmarket](https://github.com/plihelix/l2m) - (L2M) Low Impact Local Market Data Aggregation
+# *`Intention and Limitations:`*
+* This is not intended to compete or subvert paid data by these providers. It is to be a limited dataset for ease of use in development projects or for private studies.
+* Will be limited to daily and hourly data on the 505 S&P Components. After the initial fill, updates will be required to occur during off-market hours only.
 
-## Automates the aggregation of open-source stock market data into a historical database of daily stock price data for analysis.
+## Lightlocalmarket automates the aggregation of open-source stock market data into a historical database of daily stock price data for analysis.
 
-Currently retrieves ONCE. Full 505 components in the S&P 500 daily history for up to 20 years and stores them in a Mongo-DB. Stored in float-16 for OHLC data and int32 for the volume. Later plans to incorperate an option for more traditional 32-bit floats.
+A project for IST421-T4. 
+Currently retrieves ONCE.
+
+##### Retrieves historical data on 505 components in the S&P 500 daily history for up to 20 years and stores them in a MongoDB. 
+Stored in 16 bit float for OHLC data and 32 bit integers for the Volume. Later plans to incorperate an option for more traditional 32-bit floats.
 
 Full daily data approximates 250mb stored.
-[TODO:Hourly data x8 for about 2.3gb combined]
+# *`Setup Instructions:`*
+## *Required:*
+* MongoDB:
+	* for local install [mongodb community](https://www.mongodb.com/try/download/community)
+	* for free cloud [try mongodb atlas](https://www.mongodb.com/try)
 
-# Required MongoDB: [mongodb.com](https://www.mongodb.com/try/download/community)
+Once setup, the URI address should look something like this: `mongodb://localhost:27017/`
+Please place this in the `.l2m` configuration file inside of the quotes for the appropriate items.
+* Sign up for API access:
+	* [Alpha Vantage](https://www.alphavantage.co/support/#api-key) 
+	* [Tradier Sandbox](https://developer.tradier.com/user/sign_up)
+	* Optional [Polygon.io](https://polygon.io/) *`(Working not yet implemented)`
 
-## *`TARGETS:`*
-* collate free stock market data from public sources
+# *`Using lightlocalmarket:`*
+Running `lightlocalmarket` will display the avaiable commands as well as the status of api's in the config file.
+![command output](https://github.com/plihelix/l2m/assets/BasicRun.png)
+
+First step: Use `lightlocalmarket getindex` to import the current S&P 500 constituents from [Wikipedia](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)
+![command output](https://github.com/plihelix/l2m/assets/getindex.png)
+
+Second step: Use `lightlocalmarket run` to retrieve daily data for the symbols from Alpha Vantage and Tradier.
+![command output](https://github.com/plihelix/l2m/assets/Initial_Run.png)
+* The application can be interrupted and will resume if run again.
+* Two threads are assigned a portion of the missing list. Because of different complexities in data one may terminate the program early. Simply run again and the remaining will be split again.
+
+Optional: Minimize that console and open another console window.
+`lightlocalmarket test [SYMBOL]` will retrieve the last daily data OHLV for the symbol from the database and output it to the console. 
+![command output](https://github.com/plihelix/l2m/assets/dataretrieval_test.png)
+`lightlocalmarket all` wil list the status of every component in the index.
+![command output](https://github.com/plihelix/l2m/assets/all_downloadinprogress.png)
+# *`TARGETS:`*
+* collate stock market data from public sources for example uses in statistical analysis, strategy basktesting, and more.
 * automatically update mongoDB with historical data for the S&P 500
+# *`Data Structure:`*
+## SP_500.components
+![command output](https://github.com/plihelix/l2m/assets/components_datastructure.png)
 
-## *`DATA AGGREGATION:`*
-    * Request the free API key. Paste it into the config file `.l2m`
-    * Copying the config file to your OS specified user home directory is optional but should protect from accidental overwrites.
-* [Alpha Vantage](https://www.alphavantage.co/) **`(Working)`**
-* [Polygon.io](https://polygon.io/) **`(Working not yet implemented)`**
-* [Tradier](https://tradier.com/) **`(Working)`**
-* [TBD ...]
-
-## *`Command Line Interface Commands`*
-* getindex - imports the current S&P 500 constituents from [Wikipedia](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)
-* run [SYMBOL] - retrieve daily data for the symbols from Alpha Vantage and Tradier.
-* test [SYMBOL] - retrieve the last daily data for the symbol from the database.
-* all - list the status of every component in the index
-
-# Setup:
-
-Each API key should be added to the .l2m file in the appropriate location.
-The default mongoDb location is local this is currently not required as the URI is also in the .l2m config file. However, no security logic is yet implemented.
+## SP_500.day
+![command output](https://github.com/plihelix/l2m/assets/day_datastructure.png)
+*note that MongoDB Compass is not able to display 16 bit floating points correctly. 
