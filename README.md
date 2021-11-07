@@ -5,7 +5,9 @@
 Currently retrieves ONCE. Full 505 components in the S&P 500 daily history for up to 20 years and stores them in a Mongo-DB. Stored in float-16 for OHLC data and int32 for the volume. Later plans to incorperate an option for more traditional 32-bit floats.
 
 Full daily data approximates 250mb stored.
-[TODO:Hourly data x8 for about 2.3gb combined]
+## *`Notes`
+* TODO: Hourly data for about 2.3gb combined.
+Full hourly depth is problematic since the logic to validate the data is required. And up next.
 
 # Required MongoDB: [mongodb.com](https://www.mongodb.com/try/download/community)
 
@@ -23,7 +25,7 @@ Full daily data approximates 250mb stored.
 
 ## *`Command Line Interface Commands`*
 * getindex - imports the current S&P 500 constituents from [Wikipedia](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies)
-* run [SYMBOL] - retrieve daily data for the symbols from Alpha Vantage and Tradier.
+* run - retrieve daily data for the symbols from Alpha Vantage and Tradier.
 * test [SYMBOL] - retrieve the last daily data for the symbol from the database.
 * all - list the status of every component in the index
 
