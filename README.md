@@ -42,7 +42,7 @@ Running `lightlocalmarket` will display the avaiable commands as well as the sta
 
 Optional: Minimize that console and open another console window.
 
-`lightlocalmarket test [SYMBOL]` will retrieve the last daily data OHLV for the symbol from the database and output it to the console.
+`lightlocalmarket test [SYMBOL]` will retrieve the last daily data OHLC+V for the symbol from the database and output it to the console.
 <img src="assets/dataretrieval_test.png">
 
 `lightlocalmarket all` will list the status of every component in the index.
